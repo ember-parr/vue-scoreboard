@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <img alt="Rover logo" src="./assets/rover.png" class="headerImg"/>
+    <matchup-title />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import MatchupTitle from "./components/MatchupTitle.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    MatchupTitle
   }
 };
 </script>
@@ -23,6 +23,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-image: url(assets/background.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  max-width: 100%;
+  height: auto;
+}
+.headerImg {
+  width: 20%;
+  height: auto;
+  padding: 30px;
 }
 </style>
