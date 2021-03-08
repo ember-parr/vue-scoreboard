@@ -1,26 +1,44 @@
 <template>
-  <h3>{{ message ? "Begin Play... " : message }}</h3>
+  <!-- <h3>{{ message ? "Begin Play... " : message }}</h3> -->
+  <div>
+    <h3>{{ message }}</h3>
+  </div>
 </template>
 
 <script>
-import { teams } from "../data.js";
 export default {
+  props: ["teams", "winner"],
+  data() {
+    return {
+      currentWinner: this.winner
+    };
+  },
   methods: {
     createMessage() {
       let plural = true;
       let pointDifference = 0;
-      let [teamA, teamB] = teams;
+      let [teamA, teamB] = this.teams;
 
       if (teamA.score > teamB.score) {
         pointDifference = teamA.score - teamB.score;
-        return `${teamA.name}'s is winning by ${pointDifference} ${
+        if (pointDifference === 1) {
+            plural = false;
+        }
+        return `${this.winner} are winning by ${pointDifference} ${
           plural ? "points" : "point"
         } `;
       } else if (teamA.score < teamB.score) {
         pointDifference = teamB.score - teamA.score;
-        return plural;
+        if (pointDifference === 1) {
+            plural = false;
+        }
+        return `${this.winner} are winning by ${pointDifference} ${
+          plural ? "points" : "point"
+        } `;
+      } else if (teamA.score === 0 && teamB.score === 0) {
+        return "start playing!";
       } else if (teamA.score === teamB.score) {
-        return "TIE GAME!";
+        return "TIE GAME";
       }
     }
   },

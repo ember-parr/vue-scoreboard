@@ -1,12 +1,12 @@
 <template>
   <div>
     <h1>
-      <span :class="{ winner: teams[0].winner }">{{ teams[0].name }} </span>
+      <span :class="{ winner: teamAWinning }">{{ teams[0].name }} </span>
       vs.
-      <span :class="{ winner: teams[1].winner }">{{ teams[1].name }} </span>
+      <span :class="{ winner: teamBWinning }">{{ teams[1].name }} </span>
     </h1>
     <br />
-    <message />
+    <message :teams="teams" :winner="winner" :pointsDifference="0" />
     <div v-for="team in teams" :key="team.id" class="pointsBox">
       <scorecard
         :key="team.id"
@@ -22,26 +22,32 @@
 import { teams } from "../data";
 import Scorecard from "./Scorecard.vue";
 import Message from "./Message.vue";
+
 export default {
   components: { Scorecard, Message },
   data() {
     return {
-      teams: [...teams]
+      teams: [...teams],
+      teamAWinning: false,
+      teamBWinning: false,
+      winner: ""
     };
   },
   methods: {
     getRank() {
       const [teamA, teamB] = this.teams;
       if (teamA.score === teamB.score) {
-        teamA.winner = false;
-        teamB.winner = false;
-        console.log("team a winning");
+        this.teamAWinning = false;
+        this.teamBWinning = false;
+        this.winner = "tie";
       } else if (teamA.score > teamB.score) {
-        teamA.winner = true;
-        teamB.winner = false;
+        this.teamAWinning = true;
+        this.teamBWinning = false;
+        this.winner = teamA.name;
       } else {
-        teamB.winner = true;
-        teamA.winner = false;
+        this.teamBWinning = true;
+        this.teamAWinning = false;
+        this.winner = teamB.name;
       }
     },
     addPoint(team) {
