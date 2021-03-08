@@ -2,7 +2,8 @@
   <div>
     <h3>{{ team.name }}</h3>
     <h2>{{ team.score }}</h2>
-    <button class="minusBtn">-</button> <button class="plusBtn">+</button>
+    <button class="minusBtn" :disabled="team.score === 0" @click="minusPoint">-</button>
+    <button class="plusBtn" @click="plusPoint">+</button>
   </div>
 </template>
 
@@ -10,13 +11,11 @@
 export default {
   props: ["team"],
   methods: {
-    handlePlusClick() {
-      this.$emit("addPoint", this.team);
-    }
-  },
-  computed: {
-    score() {
-      return this.team.score;
+    minusPoint() {
+      this.$emit("minus-point", this.team);
+    },
+    plusPoint() {
+      this.$emit("plus-point", this.team)
     }
   }
 };
@@ -33,13 +32,18 @@ div {
   flex: 0.4;
 }
 button {
-    padding: 15px;
-    border-radius: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 2rem;
+  border: none;
+  width: 50px;
 }
 .minusBtn {
-    background-color: maroon;
+  background-color: #2f5476;
+  margin-right: 20px;
 }
 .plusBtn {
-    background-color: forestgreen;
+  background-color: #6c94ac;
 }
 </style>

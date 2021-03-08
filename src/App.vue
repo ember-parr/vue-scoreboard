@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Rover logo" src="./assets/rover.png" class="headerImg"/>
-    <matchup-title />
+    <img alt="Rover logo" src="./assets/rover.png" class="headerImg" />
+    <matchup-title  />
   </div>
 </template>
 
 <script>
 import MatchupTitle from "./components/MatchupTitle.vue";
-
 export default {
   name: "App",
   components: {
     MatchupTitle
-  }
+  },
+  
 };
 </script>
 
