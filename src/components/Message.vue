@@ -22,7 +22,7 @@ export default {
       if (teamA.score > teamB.score) {
         pointDifference = teamA.score - teamB.score;
         if (pointDifference === 1) {
-            plural = false;
+          plural = false;
         }
         return `${this.winner} are winning by ${pointDifference} ${
           plural ? "points" : "point"
@@ -30,7 +30,7 @@ export default {
       } else if (teamA.score < teamB.score) {
         pointDifference = teamB.score - teamA.score;
         if (pointDifference === 1) {
-            plural = false;
+          plural = false;
         }
         return `${this.winner} are winning by ${pointDifference} ${
           plural ? "points" : "point"

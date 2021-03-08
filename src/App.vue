@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Rover logo" src="./assets/rover.png" class="headerImg" />
-    <matchup-title  />
+    <matchup-title />
   </div>
 </template>
 
@@ -11,8 +11,7 @@ export default {
   name: "App",
   components: {
     MatchupTitle
-  },
-  
+  }
 };
 </script>
 

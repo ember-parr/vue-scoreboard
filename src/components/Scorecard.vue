@@ -2,7 +2,9 @@
   <div>
     <h3>{{ team.name }}</h3>
     <h2>{{ team.score }}</h2>
-    <button class="minusBtn" :disabled="team.score === 0" @click="minusPoint">-</button>
+    <button class="minusBtn" :disabled="team.score === 0" @click="minusPoint">
+      -
+    </button>
     <button class="plusBtn" @click="plusPoint">+</button>
   </div>
 </template>
@@ -15,7 +17,7 @@ export default {
       this.$emit("minus-point", this.team);
     },
     plusPoint() {
-      this.$emit("plus-point", this.team)
+      this.$emit("plus-point", this.team);
     }
   }
 };
